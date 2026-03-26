@@ -48,6 +48,12 @@ export const AnswerScreen = ({ question, answer, GaugeChartComponent, onBack, se
     setSum(value ?? 0);
   };
 
+  const submit = () => {
+    window.location.replace(
+      'alfabank://sdui_screen?screenName=InvestmentLongread&fromCurrent=true&shouldUseBottomSafeArea=true&endpoint=v1/invest-main-screen-view/investment-longread/98955%3flocation=AM%26campaignCode=GH',
+    );
+  };
+
   return (
     <div className={appSt.page}>
       <div className={appSt.hero}>
@@ -265,7 +271,7 @@ export const AnswerScreen = ({ question, answer, GaugeChartComponent, onBack, se
         <button type="button" className={answerSt.backButton} onClick={onBack}>
           <ChevronLeftMIcon className={answerSt.backIcon} />
         </button>
-        <Button type="button" block className={answerSt.actionButton} view="primary">
+        <Button onClick={submit} type="button" block className={answerSt.actionButton} view="primary">
           <Typography.Text tag="span" view="primary-medium" color="primary-inverted" weight="medium">
             Поставить кешбэк
           </Typography.Text>
