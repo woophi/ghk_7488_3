@@ -63,7 +63,11 @@ const AnswerButton = ({ question, answer, setAnswerData }: AnswerButtonProps) =>
     <button
       className={tone === 'positive' ? appSt.answerButtonPositive : appSt.answerButtonNegative}
       type="button"
-      onClick={() => setAnswerData({ question, answer })}
+      onClick={() => {
+        window.gtag('event', '7488_answer_click', { question: question.question, answer, var: 'var3' });
+
+        setAnswerData({ question, answer });
+      }}
     >
       <Typography.Text tag="span" view="primary-medium" weight="bold" color={tone === 'positive' ? 'positive' : 'negative'}>
         {getAnswerText(answer)}
@@ -142,6 +146,7 @@ export const App = () => {
     if (!LS.getItem(LSKeys.UserId, null)) {
       LS.setItem(LSKeys.UserId, Date.now());
     }
+    window.gtag('event', '7488_selection_impression', { var: 'var3' });
   }, []);
 
   useEffect(() => {
